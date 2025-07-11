@@ -9,6 +9,7 @@ app = Flask(__name__)
 # Load Firebase Admin credentials (this file stays on the server!)
 key_json = os.environ.get("FIREBASE_KEY_JSON")
 cred = credentials.Certificate(json.loads(key_json))
+firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 @app.route("/get_offer/<user_id>", methods=["GET"])
